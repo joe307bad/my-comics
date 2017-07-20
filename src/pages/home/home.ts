@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  goToSearch(){
+    this.navCtrl.push("search")
+  }
+
 }
