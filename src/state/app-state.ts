@@ -4,6 +4,6 @@ export interface AppState{
   myComics: Comic[];
 }
 
-export const initialAppState: AppState = {
+export const InitialAppState: AppState = {
   myComics: []
 };
