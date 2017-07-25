@@ -1,6 +1,4 @@
-import {Comic} from '../../models/comic'
 import * as comic from '../actions/comic.actions'
-import {State} from "@ngrx/store";
 import {AppState} from "../app-state";
 import {InitialAppState} from "../app-state"
 
