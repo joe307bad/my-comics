@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, IonicPage} from 'ionic-angular';
-
-/**
- * Generated class for the SearchPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {IonicPage} from 'ionic-angular';
+import {Comic} from "../../models/comic";
+import {Observable} from "rxjs";
+import {List} from "immutable";
+import {Store} from "@ngrx/store";
+import * as fromRoot from '../../state/reducers';
 
 @IonicPage({
   name: 'search'
@@ -17,11 +15,18 @@ import {NavController, NavParams, IonicPage} from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  searchResults: Observable<List<Comic>>;
+
+  constructor(private store: Store<fromRoot.State>) {
+    this.searchResults = store.select(fromRoot.getSearchResults);
+  }
+
+  Search(): void{
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+
   }
 
 }
