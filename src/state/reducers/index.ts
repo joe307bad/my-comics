@@ -87,7 +87,7 @@ export function reducer(state: any, action: any) {
  * ```
  */
 export const getSearchState = (state: State) => state.comicSearch;
-export const getSearchResults = createSelector(getSearchState, fromComicSearch.getSearchResults);
+export const getSearchResults1 = createSelector(getSearchState, fromComicSearch.getSearchResults);
 
 // export const getSearchResults =
 //   createSelector(getBookEntities, getSearchBookIds, (books, searchIds) => {

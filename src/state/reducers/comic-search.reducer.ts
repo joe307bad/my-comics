@@ -1,5 +1,4 @@
 import * as comic from '../actions/comic-search.actions'
-import {AppState} from "../app-state";
 import {List} from "immutable";
 import {Comic} from "../../models/comic";
 
@@ -8,7 +7,7 @@ export interface State {
   loading: boolean;
   query: string;
   searchResults: List<Comic>;
-};
+}
 
 const initialState: State = {
   loaded: false,
@@ -48,4 +47,6 @@ export function reducer(state = initialState, action: comic.Actions): State {
   }
 }
 
-export const getSearchResults = (state: State) => state.searchResults;
+export const getSearchResults = (state: State) => {
+  return state.searchResults
+};
