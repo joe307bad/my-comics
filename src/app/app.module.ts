@@ -21,7 +21,7 @@ import {ComicSearchEffects} from "../state/effects/comic-search.effects"
     BrowserModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducer),
-    EffectsModule.forRoot([ComicSearchEffects]),
+    //EffectsModule.forRoot([ComicSearchEffects]),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
