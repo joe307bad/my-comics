@@ -55,7 +55,7 @@ export interface State {
  * wrapping that in storeLogger. Remember that compose applies
  * the result from right to left.
  */
-const reducers = {
+export const reducers = {
   comicSearch: fromComicSearch.reducer
 };
 

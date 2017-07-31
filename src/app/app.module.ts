@@ -9,8 +9,9 @@ import {HomePage} from '../pages/home/home';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StoreModule} from "@ngrx/store";
-import {reducer} from "../state/reducers/index";
-import {ComicSearchEffects} from "../state/effects/comic-search.effects"
+import {reducers} from "../state/reducers/index";
+import {AuthEffects} from "../state/effects/comic-search.effects"
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,11 @@ import {ComicSearchEffects} from "../state/effects/comic-search.effects"
     HomePage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    StoreModule.forRoot(reducer),
-    //EffectsModule.forRoot([ComicSearchEffects]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   bootstrap: [IonicApp],
   entryComponents: [
