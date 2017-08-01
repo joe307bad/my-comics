@@ -6,6 +6,8 @@ import {List} from "immutable";
 import {Store} from "@ngrx/store";
 import * as fromRoot from '../../state/reducers';
 import * as comicSearch from '../../state/actions/comic-search.actions';
+import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {State} from "../../state/reducers/index";
 
 @IonicPage({
   name: 'search'
@@ -17,14 +19,30 @@ import * as comicSearch from '../../state/actions/comic-search.actions';
 })
 export class SearchPage {
 
-  searchResults: Observable<List<Comic>>;
+  searchForm: FormGroup;
+  searchResults: Array<Comic>;
 
-  constructor(private store: Store<fromRoot.State>) {
-    //this.searchResults = store.select(fromRoot.getSearchResults1);
+
+  constructor(private store: Store<State>, private formBuilder: FormBuilder){
+
+    this.searchForm = this.formBuilder.group({
+      searchQuery:["",Validators.required]
+    });
+
+    store.subscribe(search => {
+      this.searchResults = search.comicSearch.searchResults;
+    });
+
+
   }
 
   Search(): void{
-    this.store.dispatch(new comicSearch.ComicSearchAction());
+    let query = this.searchForm.get('searchQuery').value;
+    this.store.dispatch(new comicSearch.ComicSearchAction(query));
+  }
+
+  ClearResults(): void{
+    this.store.dispatch(new comicSearch.ComicClearResultsAction());
   }
 
   ionViewDidLoad() {

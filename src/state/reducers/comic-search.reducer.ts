@@ -6,32 +6,37 @@ export interface State {
   loaded: boolean,
   loading: boolean;
   query: string;
-  searchResults: List<Comic>;
+  searchResults: Array<Comic>;
 }
 
 const initialState: State = {
   loaded: false,
   loading: false,
   query: '',
-  searchResults: List([]),
+  searchResults: []
 };
 
 export function reducer(state = initialState, action: comic.Actions): State {
   switch (action.type) {
+
     case comic.SEARCH_COMIC: {
+      let query = action.payload;
       return Object.assign({}, state, {
-        loading: true
+        loading: true,
+        query:  query
       });
     }
 
     case comic.SEARCH_COMIC_SUCCESS: {
-      const comics = action.payload;
+      let comics = action.payload;
 
-      return Object.assign({}, state, {
+
+      return {
+        query: "",
         loading: false,
         loaded:  true,
-        searchResults: List(comics)
-      });
+        searchResults: comics
+      };
     }
 
     case comic.SEARCH_COMIC_FAILURE: {
@@ -39,10 +44,25 @@ export function reducer(state = initialState, action: comic.Actions): State {
       return Object.assign({}, state, {
         loaded: true,
         loading: false,
-        searchResults: List([])
+        searchResults: []
       });
 
     }
+
+    case comic.SEARCH_CLEAR_RESULTS: {
+
+      return Object.assign({}, state, {
+        loaded: true,
+        loading: false,
+        searchResults: []
+      });
+
+    }
+
+    default: {
+      return state;
+    }
+
 
   }
 }

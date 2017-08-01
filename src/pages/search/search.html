@@ -11,9 +11,22 @@
   <button ion-button full (click)="Search()">
     Search
   </button>
-  <ion-list>
-    <button ion-item *ngFor="let result of searchResults | async">
-      {{result.Id}}
-    </button>
+  <ion-list >
+    <ion-item (click)="ClearResults()">
+      <h2>Clear Results</h2>
+    </ion-item>
+    <form [formGroup]="searchForm">
+      <ion-item>
+        <ion-input formControlName="searchQuery" type="text" placeholder="Query"></ion-input>
+      </ion-item>
+    </form>
+    <ion-item *ngFor="let result of searchResults">
+      <ion-thumbnail item-start>
+        <img src="{{result.image.icon_url}}">
+      </ion-thumbnail>
+      <h2>{{result.name}}</h2>
+      <p>{{result.issue_number}} • {{result.store_date}}</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
   </ion-list>
 </ion-content>

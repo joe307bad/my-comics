@@ -10,8 +10,9 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StoreModule} from "@ngrx/store";
 import {reducers} from "../state/reducers/index";
-import {AuthEffects} from "../state/effects/comic-search.effects"
+import {ComicSearchEffects} from "../state/effects/comic-search.effects"
 import { HttpModule } from '@angular/http';
+import {ComicService} from "../services/comic.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([ComicSearchEffects])
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,6 +32,7 @@ import { HttpModule } from '@angular/http';
     HomePage,
   ],
   providers: [
+    ComicService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

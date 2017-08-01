@@ -36,7 +36,7 @@ import {combineReducers} from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromComicSearch from './comic-search.reducer';
+import * as fromComicSearchReducer from './comic-search.reducer';
 
 
 /**
@@ -44,7 +44,7 @@ import * as fromComicSearch from './comic-search.reducer';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  comicSearch: fromComicSearch.State;
+  comicSearch: fromComicSearchReducer.State;
 }
 
 
@@ -56,7 +56,7 @@ export interface State {
  * the result from right to left.
  */
 export const reducers = {
-  comicSearch: fromComicSearch.reducer
+  comicSearch: fromComicSearchReducer.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -87,7 +87,7 @@ export function reducer(state: any, action: any) {
  * ```
  */
 export const getSearchState = (state: State) => state.comicSearch;
-export const getSearchResults1 = createSelector(getSearchState, fromComicSearch.getSearchResults);
+export const getSearchResults = createSelector(getSearchState, fromComicSearchReducer.getSearchResults);
 
 // export const getSearchResults =
 //   createSelector(getBookEntities, getSearchBookIds, (books, searchIds) => {
