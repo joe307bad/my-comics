@@ -20,7 +20,7 @@
         <ion-input formControlName="searchQuery" type="text" placeholder="Query"></ion-input>
       </ion-item>
     </form>
-    <ion-item *ngFor="let result of searchResults">
+    <ion-item *ngFor="let result of searchResults | async">
       <ion-thumbnail item-start>
         <img src="{{result.image.icon_url}}">
       </ion-thumbnail>

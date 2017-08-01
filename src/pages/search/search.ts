@@ -20,18 +20,15 @@ import {State} from "../../state/reducers/index";
 export class SearchPage {
 
   searchForm: FormGroup;
-  searchResults: Array<Comic>;
+  searchResults: Observable<List<Comic>>;
 
-
-  constructor(private store: Store<State>, private formBuilder: FormBuilder){
+  constructor(private store: Store<fromRoot.State>, private formBuilder: FormBuilder){
 
     this.searchForm = this.formBuilder.group({
       searchQuery:["",Validators.required]
     });
 
-    store.subscribe(search => {
-      this.searchResults = search.comicSearch.searchResults;
-    });
+    this.searchResults = store.select(fromRoot.getSearchResults);
 
 
   }

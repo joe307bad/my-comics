@@ -10,7 +10,7 @@ export class ComicService {
   constructor(public loadingCtrl: LoadingController) {
   }
 
-  SearchComics(options?: CoreOptions, query?: string): Observable<Array<Comic>> {
+  SearchComics(options?: CoreOptions, query?: string): Observable<List<Comic>> {
 
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -25,12 +25,14 @@ export class ComicService {
         "limit": 20,
         "page": 1,
         "filter": "name:" + query,
+        //add filter for issue_number
+        //add filter for store_date
         "resources": "issue",
         "sort": "cover_date:desc"
       }
     }).map(comicSearchResult => {
       loading.dismiss();
-      return JSON.parse(comicSearchResult.body).results;
+      return List(JSON.parse(comicSearchResult.body).results);
     });
   }
 }
