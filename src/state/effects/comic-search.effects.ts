@@ -10,6 +10,7 @@ import {of} from 'rxjs/observable/of';
 import * as comic from '../actions/comic-search.actions';
 import {ComicService} from "../../services/comic.service";
 import {CoreOptions} from "rx-http-request";
+import { LoadingController } from 'ionic-angular';
 
 @Injectable()
 export class ComicSearchEffects {
@@ -27,6 +28,7 @@ export class ComicSearchEffects {
 
   constructor(private http: Http,
               private actions$: Actions,
-              private comicService: ComicService) {
+              private comicService: ComicService,
+              public loadingCtrl: LoadingController) {
   }
 }

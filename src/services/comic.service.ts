@@ -3,13 +3,20 @@ import {RxHttpRequest, CoreOptions} from "rx-http-request";
 import {Observable} from "rxjs";
 import {Comic} from "../models/comic";
 import {List} from "immutable";
+import {LoadingController} from "ionic-angular";
 
 @Injectable()
 export class ComicService {
-  constructor() {
+  constructor(public loadingCtrl: LoadingController) {
   }
 
   SearchComics(options?: CoreOptions, query?: string): Observable<Array<Comic>> {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
     return RxHttpRequest.get("http://comicvine.gamespot.com/api/issues/", {
       qs: {
         "api_key": "1029e36327f4b78222e826cfc08b50cf22d61828",
@@ -21,6 +28,9 @@ export class ComicService {
         "resources": "issue",
         "sort": "cover_date:desc"
       }
-    }).map(comicSearchResult => JSON.parse(comicSearchResult.body).results);
+    }).map(comicSearchResult => {
+      loading.dismiss();
+      return JSON.parse(comicSearchResult.body).results;
+    });
   }
 }

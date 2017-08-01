@@ -37,6 +37,7 @@ export class SearchPage {
   }
 
   Search(): void{
+
     let query = this.searchForm.get('searchQuery').value;
     this.store.dispatch(new comicSearch.ComicSearchAction(query));
   }
