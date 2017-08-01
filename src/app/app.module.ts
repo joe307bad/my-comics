@@ -13,6 +13,7 @@ import {reducers} from "../state/reducers/index";
 import {ComicSearchEffects} from "../state/effects/comic-search.effects"
 import { HttpModule } from '@angular/http';
 import {ComicService} from "../services/comic.service";
+import {DefaultDate} from "../utilities/pipes";
 
 @NgModule({
   declarations: [

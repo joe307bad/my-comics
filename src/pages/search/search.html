@@ -20,13 +20,13 @@
         <ion-input formControlName="searchQuery" type="text" placeholder="Query"></ion-input>
       </ion-item>
     </form>
-    <ion-item *ngFor="let result of searchResults | async">
+    <ion-item *ngFor="let result of searchResults">
       <ion-thumbnail item-start>
-        <img src="{{result.image.icon_url}}">
+        <img src="{{result.Image}}">
       </ion-thumbnail>
-      <h2>{{result.name}}</h2>
-      <p>{{result.issue_number}} • {{result.store_date}}</p>
-      <button ion-button clear item-end>View</button>
+      <h2>{{result.Name}}</h2>
+      <p>{{result.Number}} • {{result.StoreDate | defaultDate}}</p>
+      <button ion-button clear item-end>Add</button>
     </ion-item>
   </ion-list>
 </ion-content>

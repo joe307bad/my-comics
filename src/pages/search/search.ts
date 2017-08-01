@@ -7,7 +7,6 @@ import {Store} from "@ngrx/store";
 import * as fromRoot from '../../state/reducers';
 import * as comicSearch from '../../state/actions/comic-search.actions';
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {State} from "../../state/reducers/index";
 
 @IonicPage({
   name: 'search'
@@ -29,12 +28,9 @@ export class SearchPage {
     });
 
     this.searchResults = store.select(fromRoot.getSearchResults);
-
-
   }
 
   Search(): void{
-
     let query = this.searchForm.get('searchQuery').value;
     this.store.dispatch(new comicSearch.ComicSearchAction(query));
   }
