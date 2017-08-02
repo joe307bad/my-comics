@@ -17,6 +17,8 @@ export class ComicService {
     });
     loading.present();
 
+    query = query ? query : "flash";
+
     return RxHttpRequest.get("http://comicvine.gamespot.com/api/issues/", {
       qs: {
         "api_key": "1029e36327f4b78222e826cfc08b50cf22d61828",
@@ -33,8 +35,7 @@ export class ComicService {
       json: true
     }).map(comicSearchResult => {
       loading.dismiss();
-      var comics = comicSearchResult.body.results.map(comic => ToAppComic(comic));
-      return List(comics);
+      return List(comicSearchResult.body.results.map(comic => ToAppComic(comic)));
     });
   }
 }

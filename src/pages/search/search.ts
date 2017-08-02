@@ -6,7 +6,9 @@ import {List} from "immutable";
 import {Store} from "@ngrx/store";
 import * as fromRoot from '../../state/reducers';
 import * as comicSearch from '../../state/actions/comic-search.actions';
+import * as comicCrud from '../../state/actions/comic-crud.actions';
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {DefaultDatePipe} from "../../utilities/pipes";
 
 @IonicPage({
   name: 'search'
@@ -14,7 +16,7 @@ import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
-  providers: [Store]
+  providers: [Store, DefaultDatePipe]
 })
 export class SearchPage {
 
@@ -37,6 +39,10 @@ export class SearchPage {
 
   ClearResults(): void{
     this.store.dispatch(new comicSearch.ComicClearResultsAction());
+  }
+
+  AddComic(comic: Comic): void{
+    this.store.dispatch(new comicCrud.ComicAddAction(comic));
   }
 
   ionViewDidLoad() {

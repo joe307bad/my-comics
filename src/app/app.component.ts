@@ -3,10 +3,17 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import * as fromRoot from '../state/reducers';
 import { HomePage } from '../pages/home/home';
+import {Comic} from "../models/comic";
+import {List} from "immutable";
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {DefaultDatePipe} from "../utilities/pipes";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [Store, DefaultDatePipe]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -15,13 +22,17 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  myComics: Observable<List<Comic>>;
+
+  constructor(private store: Store<fromRoot.State>, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage }
     ];
+
+    this.myComics = store.select(fromRoot.getMyComics);
 
   }
 

@@ -13,24 +13,32 @@ import {reducers} from "../state/reducers/index";
 import {ComicSearchEffects} from "../state/effects/comic-search.effects"
 import { HttpModule } from '@angular/http';
 import {ComicService} from "../services/comic.service";
-import {DefaultDate} from "../utilities/pipes";
+import {ComicCrudEffects} from "../state/effects/comic-crud.effects";
+import {SearchModule} from "../pages/search/search.module";
+import {SearchPage} from "../pages/search/search";
+import {PipeModule} from "../utilities/pipe.module";
+
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
   imports: [
+
+    PipeModule,
+    SearchModule,
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ComicSearchEffects])
+    EffectsModule.forRoot([ComicSearchEffects, ComicCrudEffects]),
+  ],
+  declarations: [
+    MyApp,
+    HomePage
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    SearchPage
   ],
   providers: [
     ComicService,

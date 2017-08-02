@@ -2,10 +2,10 @@ import {Pipe, PipeTransform} from "@angular/core";
 import * as moment from "moment";
 
 @Pipe({
-  name: "defaultDate"
+  name: "friendlyDate"
 })
-export class DefaultDate implements PipeTransform {
-  transform(value: moment.Moment): string {
+export class DefaultDatePipe implements PipeTransform {
+  transform(value: moment.Moment): any {
     return value.format("LL");
   }
 }

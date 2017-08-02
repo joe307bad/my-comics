@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {IonicPageModule} from 'ionic-angular';
 import {SearchPage} from './search';
-import {DefaultDate} from "../../utilities/pipes";
+import {PipeModule} from "../../utilities/pipe.module";
 
 @NgModule({
   declarations: [
-    SearchPage,
-    DefaultDate
+    SearchPage
   ],
   imports: [
+    PipeModule,
     IonicPageModule.forChild(SearchPage)
   ],
 })

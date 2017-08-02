@@ -10,6 +10,14 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <ion-item *ngFor="let comic of myComics | async">
+        <ion-thumbnail item-start>
+          <img src="{{comic.Image}}">
+        </ion-thumbnail>
+        <h2>{{comic.Name}}</h2>
+        <p>{{comic.Number}} • {{comic.StoreDate | friendlyDate}}</p>
+        <button ion-button clear item-end>Add</button>
+      </ion-item>
     </ion-list>
   </ion-content>
 

@@ -30,7 +30,6 @@ export function reducer(state = initialState, action: comic.Actions): State {
     case comic.SEARCH_COMIC_SUCCESS: {
       let comics = action.payload;
 
-
       return {
         query: "",
         loading: false,
@@ -44,7 +43,7 @@ export function reducer(state = initialState, action: comic.Actions): State {
       return Object.assign({}, state, {
         loaded: true,
         loading: false,
-        searchResults: []
+        searchResults: List([])
       });
 
     }
@@ -54,7 +53,7 @@ export function reducer(state = initialState, action: comic.Actions): State {
       return Object.assign({}, state, {
         loaded: true,
         loading: false,
-        searchResults: []
+        searchResults: List([])
       });
 
     }
@@ -67,6 +66,4 @@ export function reducer(state = initialState, action: comic.Actions): State {
   }
 }
 
-export const getSearchResults = (state: State) => {
-  return state.searchResults
-};
+export const getSearchResults = (state: State) => state.searchResults;
