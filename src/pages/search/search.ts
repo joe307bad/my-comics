@@ -30,6 +30,7 @@ export class SearchPage {
     });
 
     this.searchResults = store.select(fromRoot.getSearchResults);
+
   }
 
   Search(): void{
@@ -43,10 +44,6 @@ export class SearchPage {
 
   AddComic(comic: Comic): void{
     this.store.dispatch(new comicCrud.ComicAddAction(comic));
-  }
-
-  ionViewDidLoad() {
-
   }
 
 }

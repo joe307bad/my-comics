@@ -15,13 +15,14 @@ const initialState: State = {
 export function reducer(state = initialState, action: comicCrud.Actions): State {
   switch (action.type) {
 
+    /* #region Add Comic  */
+
     case comicCrud.ADD_COMIC: {
       let selectedComic = action.payload;
       return  Object.assign({}, state, {
         selectedComic: selectedComic
       });
     }
-
 
     case comicCrud.ADD_COMIC_SUCCESS: {
 
@@ -34,10 +35,29 @@ export function reducer(state = initialState, action: comicCrud.Actions): State 
       return state;
     }
 
-    default: {
+    /* #endregion Add Comic  */
+
+    /* #region Remove  Comic  */
+
+    case comicCrud.REMOVE_COMIC_FAILURE:
+    case comicCrud.REMOVE_COMIC: {
       return state;
     }
 
+    case comicCrud.REMOVE_COMIC_SUCCESS: {
+
+      return Object.assign({}, state, {
+        myComics: state.myComics.filter(function(item) {
+          return item.Id !== action.payload;
+        })
+      });
+    }
+
+    /* #endregion Remove Comic  */
+
+    default: {
+      return state;
+    }
 
   }
 }

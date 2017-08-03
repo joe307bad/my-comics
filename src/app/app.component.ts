@@ -10,6 +10,7 @@ import {List} from "immutable";
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {DefaultDatePipe} from "../utilities/pipes";
+import * as comicCrud from '../state/actions/comic-crud.actions';
 
 @Component({
   templateUrl: 'app.html',
@@ -49,5 +50,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  RemoveComic(comicId: number): void{
+    this.store.dispatch(new comicCrud.ComicRemoveAction(comicId));
   }
 }

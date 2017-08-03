@@ -16,7 +16,7 @@
         </ion-thumbnail>
         <h2>{{comic.Name}}</h2>
         <p>{{comic.Number}} • {{comic.StoreDate | friendlyDate}}</p>
-        <button ion-button clear item-end>Add</button>
+        <button ion-button clear item-end (click)="RemoveComic(comic.Id)">Remove</button>
       </ion-item>
     </ion-list>
   </ion-content>

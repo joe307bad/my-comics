@@ -21,9 +21,7 @@ import {PipeModule} from "../utilities/pipe.module";
 
 @NgModule({
   imports: [
-
     PipeModule,
-    SearchModule,
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
@@ -37,8 +35,7 @@ import {PipeModule} from "../utilities/pipe.module";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    SearchPage
+    HomePage
   ],
   providers: [
     ComicService,
