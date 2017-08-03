@@ -1,4 +1,4 @@
-import '../src/polyfills.ts';
+import 'polyfills.ts';
 
 import '../node_modules/zone.js/dist/long-stack-trace-zone.js';
 import '../node_modules/zone.js/dist/proxy.js';
@@ -7,16 +7,15 @@ import '../node_modules/zone.js/dist/jasmine-patch.js';
 import '../node_modules/zone.js/dist/async-test.js';
 import '../node_modules/zone.js/dist/fake-async-test.js';
 
-
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
-declare let __karma__: any;
-declare let require: any;
+declare var k: any;
+declare var require: any;
 
 // Prevent Karma from running prematurely.
-__karma__.loaded = function (): void {
+k.loaded = function (): void {
   // noop
 };
 
@@ -33,4 +32,5 @@ let context: any = require.context('./', true, /\.spec\.ts/);
 context.keys().map(context);
 
 // Finally, start Karma to run the tests.
-__karma__.start();
+k.start();
+
