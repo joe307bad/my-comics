@@ -1,7 +1,7 @@
 import {TestBed, ComponentFixture, async} from '@angular/core/testing';
-import {IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
+import {appProviders, appImports, appDeclarations} from "./app.config";
 
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
@@ -12,23 +12,17 @@ describe('Component: Root Component', () => {
 
     TestBed.configureTestingModule({
 
-      declarations: [MyApp],
-
-      providers: [],
-
-      imports: [
-        IonicModule.forRoot(MyApp)
-      ]
+      declarations: appDeclarations,
+      providers: appProviders,
+      imports: appImports,
 
     }).compileComponents();
 
   }));
 
   beforeEach(() => {
-
     fixture = TestBed.createComponent(MyApp);
     comp = fixture.componentInstance;
-
   });
 
   afterEach(() => {
@@ -47,5 +41,11 @@ describe('Component: Root Component', () => {
     expect(comp['rootPage']).toBe(HomePage);
   });
 
+  it('can remove a comic from the list', () => {
+    comp.RemoveComic(1111);
+  });
+
+
+  //comp.changeTitle('Your Page');
 });
 
