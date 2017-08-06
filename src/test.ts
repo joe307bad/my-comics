@@ -1,5 +1,7 @@
 import 'polyfills.ts';
+import "zone.js";
 
+import 'reflect-metadata';
 import '../node_modules/zone.js/dist/long-stack-trace-zone.js';
 import '../node_modules/zone.js/dist/proxy.js';
 import '../node_modules/zone.js/dist/sync-test.js';
@@ -11,11 +13,11 @@ import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
-declare var k: any;
+declare var __karma__: any;
 declare var require: any;
 
 // Prevent Karma from running prematurely.
-k.loaded = function (): void {
+__karma__.loaded = function (): void {
   // noop
 };
 
@@ -32,5 +34,7 @@ let context: any = require.context('./', true, /\.spec\.ts/);
 context.keys().map(context);
 
 // Finally, start Karma to run the tests.
-k.start();
+
+__karma__.start();
+
 
