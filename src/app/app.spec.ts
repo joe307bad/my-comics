@@ -11,11 +11,9 @@ describe('Component: Root Component', () => {
   beforeEach(async(() => {
 
     TestBed.configureTestingModule({
-
       declarations: appDeclarations,
       providers: appProviders,
       imports: appImports,
-
     }).compileComponents();
 
   }));
@@ -31,10 +29,8 @@ describe('Component: Root Component', () => {
   });
 
   it('is created', () => {
-
     expect(fixture).toBeTruthy();
     expect(comp).toBeTruthy();
-
   });
 
   it('initialises with a root page of HomePage', () => {
@@ -45,7 +41,5 @@ describe('Component: Root Component', () => {
     comp.RemoveComic(1111);
   });
 
-
-  //comp.changeTitle('Your Page');
 });
 
