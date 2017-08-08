@@ -35,7 +35,8 @@ export class ComicService {
       json: true
     }).map(comicSearchResult => {
       loading.dismiss();
-      return List(comicSearchResult.body.results.map(comic => ToAppComic(comic)));
+      return null;
+      //return List(comicSearchResult.body.results.map(comic => ToAppComic(comic)));
     });
   }
 }

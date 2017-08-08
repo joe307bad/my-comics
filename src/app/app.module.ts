@@ -49,7 +49,8 @@ export let appDeclarations = [
   ],
   declarations: [
     MyApp,
-    HomePage],
+    HomePage
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,

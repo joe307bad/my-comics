@@ -1,47 +1,48 @@
-import {TestBed, ComponentFixture, async} from '@angular/core/testing';
-import {searchImports, searchProviders, searchDeclarations} from "./search.config";
-import {SearchPage} from "./search";
-import {StoreModule} from "@ngrx/store";
-import {reducers} from "../../state/reducers/index";
+import {TestBed} from '@angular/core/testing';
+import {ComicSearchEffects} from "../../state/effects/comic-search.effects";
+import {ReplaySubject} from "rxjs";
+import {provideMockActions} from "@ngrx/effects/testing";
+import * as comicSearch from '../../state/actions/comic-search.actions';
+import {HttpModule} from "@angular/http";
+import {ComicService} from "../../services/comic.service";
 import {BrowserModule} from "@angular/platform-browser";
+import {SearchPage} from "./search";
 import {IonicModule} from "ionic-angular";
-import {MyApp} from "../../app/app.component";
+import {PipeModule} from "../../utilities/pipe.module";
 
-let comp: SearchPage;
-let fixture: ComponentFixture<SearchPage>;
-
-describe('Component: Search Component', () => {
-
-  beforeEach(async(() => {
-
-    TestBed.configureTestingModule({
-      declarations: [
-        ...searchDeclarations,
-        MyApp
-      ],
-      providers: searchProviders,
-      imports: [
-        ...searchImports,
-        IonicModule.forRoot(MyApp),
-        BrowserModule,
-        StoreModule.forRoot(reducers)
-      ],
-    }).compileComponents();
-
-  }));
+describe('My Effects', () => {
+  let effects: ComicSearchEffects;
+  let actions: ReplaySubject<any>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchPage);
-    comp = fixture.componentInstance;
+    TestBed.configureTestingModule({
+      providers: [
+        ComicService,
+        ComicSearchEffects,
+        provideMockActions(() => actions),
+        // other providers
+      ],
+      declarations: [
+        SearchPage
+      ],
+      imports: [
+        PipeModule,
+        BrowserModule,
+        HttpModule,
+        IonicModule.forRoot(SearchPage)
+      ],
+    });
+
+    effects = TestBed.get(ComicSearchEffects);
   });
 
-  afterEach(() => {
-    fixture.destroy();
-    comp = null;
-  });
+  it('should work also', () => {
+    actions = new ReplaySubject(1);
 
-  it('SearchPage is created', () => {
-    expect(fixture).toBeTruthy();
-    expect(comp).toBeTruthy();
+    actions.next(new comicSearch.ComicSearchAction("the flash"));
+
+    effects.comicSearchEffect.subscribe(result => {
+      expect(result.type).toBe(comicSearch.SEARCH_COMIC_SUCCESS);
+    });
   });
 });

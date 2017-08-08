@@ -3,6 +3,8 @@ import {IonicPageModule} from 'ionic-angular';
 import {SearchPage} from './search';
 import {PipeModule} from "../../utilities/pipe.module";
 
+
+
 @NgModule({
   declarations: [
     SearchPage

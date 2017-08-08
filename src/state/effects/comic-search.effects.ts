@@ -16,7 +16,8 @@ import { LoadingController } from 'ionic-angular';
 export class ComicSearchEffects {
 
 
-  @Effect() comicSearchEffect: Observable<Action> = this.actions$.ofType(comic.SEARCH_COMIC)
+  @Effect() comicSearchEffect: Observable<Action> =
+    this.actions$.ofType(comic.SEARCH_COMIC)
     .map(toPayload)
     .switchMap(payload =>
       this.comicService.SearchComics(CoreOptions, payload)

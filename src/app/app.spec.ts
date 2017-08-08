@@ -6,7 +6,7 @@ import {appProviders, appImports, appDeclarations} from "./app.config";
 let comp: MyApp;
 let fixture: ComponentFixture<MyApp>;
 
-describe('Component: Root Component', () => {
+describe('AppRoot', () => {
 
   beforeEach(async(() => {
 
@@ -17,6 +17,7 @@ describe('Component: Root Component', () => {
     }).compileComponents();
 
   }));
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MyApp);
