@@ -11,7 +11,7 @@ export class ComicService {
   constructor(public loadingCtrl: LoadingController, private http : Http) {
   }
 
-  SearchComics(query?: string): Observable<Comic[]> {
+  SearchComics(query?: string): Observable<List<Comic>> {
 
     let loading = this.loadingCtrl.create({
       content: 'Searching ComicVine'
@@ -19,30 +19,24 @@ export class ComicService {
     loading.present();
 
     query = query ? query : "flash";
-    return this.http.get('https://comicvine.gamespot.com/api/issues/?a pi_key=1029e36327f4b78222e826cfc08b50cf22d61828&format=json')
-      .map((res) => res.json().results.map(comic => ToAppComic(comic)));
-    // return RxHttpRequest.get("http://comicvine.gamespot.com/api/issues/", {
-    //   qs: {
-    //     "api_key": "1029e36327f4b78222e826cfc08b50cf22d61828",
-    //     "field_list": "name,store_date,site_detail_url,image,cover_date,issue_number,id",
-    //     "format": "json",
-    //     "limit": 20,
-    //     "page": 1,
-    //     "filter": "name:" + query,
-    //     //add filter for issue_number
-    //     //add filter for store_date
-    //     "resources": "issue",
-    //     "sort": "cover_date:desc"
-    //   },
-    //   json: true
-    // }).map(comicSearchResult => {
-    //   loading.dismiss();
-    //   return List(comicSearchResult.body.results.map(comic => ToAppComic(comic)));
-    // });
+    return RxHttpRequest.get("http://comicvine.gamespot.com/api/issues/", {
+      qs: {
+        "api_key": "1029e36327f4b78222e826cfc08b50cf22d61828",
+        "field_list": "name,store_date,site_detail_url,image,cover_date,issue_number,id",
+        "format": "json",
+        "limit": 20,
+        "page": 1,
+        "filter": "name:" + query,
+        //add filter for issue_number
+        //add filter for store_date
+        "resources": "issue",
+        "sort": "cover_date:desc"
+      },
+      json: true
+    }).map(comicSearchResult => {
+      loading.dismiss();
+      return List(comicSearchResult.body.results.map(comic => ToAppComic(comic)));
+    });
   }
 
-
-  get() {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts').map(res => res.json());
-  }
 }

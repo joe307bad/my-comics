@@ -48,10 +48,6 @@ export class ComicSearchEffects {
     .debounceTime(this.debounce, this.scheduler || async)
     .map(toPayload)
     .switchMap(query => {
-      if (query === '') {
-        return empty();
-      }
-
       const nextSearch$ = this.actions$.ofType(comic.SEARCH_COMIC).skip(1);
 
       return this.comicService

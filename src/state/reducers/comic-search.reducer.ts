@@ -6,14 +6,14 @@ export interface State {
   loaded: boolean,
   loading: boolean;
   query: string;
-  searchResults: Comic[];
+  searchResults: List<Comic>;
 }
 
 const initialState: State = {
   loaded: false,
   loading: false,
   query: '',
-  searchResults: []
+  searchResults: List([])
 };
 
 export function reducer(state = initialState, action: comic.Actions): State {
