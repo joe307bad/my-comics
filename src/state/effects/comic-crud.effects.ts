@@ -14,12 +14,14 @@ import { LoadingController } from 'ionic-angular';
 @Injectable()
 export class ComicCrudEffects {
 
-  @Effect() comicAddEffect: Observable<Action> = this.actions$.ofType(comicCrud.ADD_COMIC)
+  @Effect() comicAddEffect: Observable<Action> =
+    this.actions$.ofType(comicCrud.ADD_COMIC)
     .map(toPayload)
     .map(data => ({type: comicCrud.ADD_COMIC_SUCCESS, payload: data}))
     .catch(error => of({type: comicCrud.ADD_COMIC_FAILURE, payload: error}));
 
-  @Effect() comicRemoveEffect: Observable<Action> = this.actions$.ofType(comicCrud.REMOVE_COMIC)
+  @Effect() comicRemoveEffect: Observable<Action> =
+    this.actions$.ofType(comicCrud.REMOVE_COMIC)
     .map(toPayload)
     .map(data => ({type: comicCrud.REMOVE_COMIC_SUCCESS, payload: data}))
     .catch(error => of({type: comicCrud.REMOVE_COMIC_FAILURE, payload: error}));

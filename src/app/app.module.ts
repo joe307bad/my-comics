@@ -1,4 +1,4 @@
-;import {NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {IonicApp} from 'ionic-angular';
 import {ComicCrudEffects} from "../state/effects/comic-crud.effects";
 import {ComicSearchEffects} from "../state/effects/comic-search.effects";
@@ -15,28 +15,6 @@ import {ErrorHandler} from "@angular/core";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {ComicService} from "../services/comic.service";
-
-export let appImports = [
-  PipeModule,
-  HttpModule,
-  BrowserModule,
-  IonicModule.forRoot(MyApp),
-  StoreModule.forRoot(reducers),
-  EffectsModule.forRoot([ComicSearchEffects, ComicCrudEffects]),
-];
-
-export let appProviders = [
-  ComicService,
-  StatusBar,
-  SplashScreen,
-  {provide: ErrorHandler, useClass: IonicErrorHandler}
-];
-
-export let appDeclarations = [
-  MyApp,
-  HomePage
-];
-
 
 @NgModule({
   imports: [

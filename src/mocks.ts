@@ -61,3 +61,23 @@ export class MenuMock {
     });
   }
 }
+
+export class ViewControllerMock {
+  public _setHeader(): any { return {} };
+  public _setNavbar(): any { return {} };
+  public _setIONContent(): any { return {} };
+  public _setIONContentRef(): any { return {} };
+}
+
+export class LoadingControllerMock {
+  _getPortal(): any { return {} };
+  create(options?: any) {
+    return new LoadingMock()
+  };
+}
+
+class LoadingMock {
+  present() { };
+  dismiss() { };
+  dismissAll() { };
+}

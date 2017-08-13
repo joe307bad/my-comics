@@ -21,7 +21,7 @@ export class ComicSearchAction implements Action {
 export class ComicSearchSuccessAction implements Action {
   readonly type = SEARCH_COMIC_SUCCESS;
 
-  constructor(public payload: List<Comic>) {
+  constructor(public payload: Comic[]) {
   }
 }
 
