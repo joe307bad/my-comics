@@ -27,7 +27,7 @@ export function getActions() {
   return new TestActions();
 }
 
-describe('Comic Search Effects', () => {
+describe('ComicSearchEffects', () => {
   let effects: ComicSearchEffects;
   let comicService: any;
   let actions$: TestActions;
@@ -51,7 +51,7 @@ describe('Comic Search Effects', () => {
     actions$ = TestBed.get(Actions);
   });
 
-  describe('Search Success', () => {
+  describe('ComicSearchSuccess', () => {
     it('fetch comics based on query from Comic Vine API, return list of comics', () => {
 
       let testComic: List<Comic> = List([{
