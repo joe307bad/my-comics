@@ -1,32 +1,33 @@
-import { browser, element, by, ElementFinder } from 'protractor';
+import {browser, element, by, ElementFinder} from 'protractor';
 
-describe('Example E2E Test', () => {
+describe('my-comics e2e test', () => {
 
   beforeEach(() => {
     browser.get('');
   });
 
-  it('the home tab is displayed by default', () => {
-
-    expect(element(by.css('#goToSearch'))).toBe(element('#goToSearch')); // Grab the title of the selected tab
-      //.toContain('Go To Search'); // Check if it contains the text "Home"
-
+  it('the home page is displayed by default', () => {
+    expect(browser.getTitle()).toEqual('Home');
   });
 
-  it('the user can browse to the contact tab and view the ionic twitter handle', () => {
+  it('go to the search page', () => {
 
-    // Click the 'About' tab
-    //element(by.css('[aria-controls=tabpanel-t0-2]')).click().then(() => {
+    // Click the goToSearch button
+    element(by.css('#goToSearch')).click().then(() => {
 
       // Wait for the page transition
-      //browser.driver.sleep(1000);
+      browser.driver.sleep(1000);
+      expect(element(by.css('#getSearchResults')).isPresent()).toBeFalsy();
+    });
+  });
 
-      // expect(element(by.css('ion-list ion-item ion-label')) // Grab the label of the list item
-      //   .getAttribute('innerHTML')) // Get the text content
-      //   .toContain('@ionicframework'); // Check if it contains the text "@ionicframework"
+  it('click Search button to get default results', () => {
 
-    //});
-
+    // Click the goTgetSearchResultsoSearch button
+    element(by.css('#getSearchResults')).click().then(() => {
+      browser.driver.sleep(5000);
+      //element(by.css('#goToSearch'))
+    });
   });
 
 });
