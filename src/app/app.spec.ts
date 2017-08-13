@@ -65,9 +65,6 @@ describe('AppRoot', () => {
     expect(comp['rootPage']).toBe(HomePage);
   });
 
-  it('can remove a comic from the list', () => {
-    comp.RemoveComic(1111);
-  });
 
 });
 
