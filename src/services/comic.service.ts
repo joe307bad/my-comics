@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {RxHttpRequest, CoreOptions} from "rx-http-request";
 import {Observable} from "rxjs";
-import {Comic, ComicVineComic, ToAppComic} from "../models/comic";
+import {Comic, ToAppComic} from "../models/comic";
 import {List} from "immutable";
 import {LoadingController} from "ionic-angular";
 import {Http} from "@angular/http";

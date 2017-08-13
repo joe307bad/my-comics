@@ -5,12 +5,12 @@ import {empty} from 'rxjs/observable/empty';
 import {Observable} from 'rxjs/Observable';
 import {
   SEARCH_SCHEDULER, SEARCH_DEBOUNCE, ComicSearchEffects,
-} from "../../state/effects/comic-search.effects";
+} from "./comic-search.effects";
 import {ComicService} from "../../services/comic.service";
 import {Comic} from "../../models/comic";
 import moment = require("moment");
-import {ComicSearchAction} from "../../state/actions/comic-search.actions";
-import {ComicSearchSuccessAction} from "../../state/actions/comic-search.actions";
+import {ComicSearchAction} from "../actions/comic-search.actions";
+import {ComicSearchSuccessAction} from "../actions/comic-search.actions";
 import {List} from "immutable";
 
 export class TestActions extends Actions {
