@@ -4,7 +4,10 @@ exports.config = {
   allScriptsTimeout: 11000,
   directConnect: true,
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions': {
+      args: ['--disable-web-security']
+    }
   },
   framework: 'jasmine',
   jasmineNodeOpts: {

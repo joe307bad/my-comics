@@ -6,10 +6,10 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+    <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      {{p.title}}
+    </button>
+    <ion-list id="my-comics">
       <ion-item *ngFor="let comic of myComics | async">
         <ion-thumbnail item-start>
           <img src="{{comic.Image}}">
