@@ -15,9 +15,9 @@ Keep track of all the comics you read, gain points, earn badges, recommend issue
  ToDo:
  
  - Finalize Protractor tests
-  * use PageObjects
-  * simplify isDisplayed promises
-  * split up tests into multiple it blocks
+      * use PageObjects
+      * simplify isDisplayed promises
+      * split up tests into multiple it blocks
  
  - Integrate CouchDB/PouchDB
  
