@@ -18,6 +18,7 @@ Keep track of all the comics you read, gain points, earn badges, recommend issue
       * use PageObjects
       * simplify isDisplayed promises
       * split up tests into multiple it blocks
+      * https://www.joshmorony.com/?s=tdd
  
  - Integrate CouchDB/PouchDB
  
